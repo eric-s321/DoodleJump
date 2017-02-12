@@ -8,7 +8,9 @@
 
 #import "ViewController.h"
 
-@interface ViewController ()
+@interface ViewController (){
+    CMMotionManager *motionManager;
+}
 
 @end
 
@@ -22,20 +24,26 @@
     [displayLink setPreferredFramesPerSecond:50];
     [displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
     
+    motionManager = [[CMMotionManager alloc] init];
+    motionManager.accelerometerUpdateInterval = 1 / 60.0;
+    
+    if([motionManager isAccelerometerAvailable]){
+        [motionManager startAccelerometerUpdatesToQueue:[[NSOperationQueue alloc] init]
+                withHandler:^(CMAccelerometerData * _Nullable data, NSError * _Nullable error) {
+                    [gameView performSelectorOnMainThread:@selector(updateVelocity:) withObject:data waitUntilDone:NO];
+                }];
+    
+    }
+    else{
+        NSLog(@"Accelerometer Not available.");
+        exit(EXIT_FAILURE);
+    }
 }
 
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-
--(IBAction)changeTilt:(id)sender{
-    
-    UISlider *slider = sender;
-    [gameView setTilt:(double)[slider value]];
-    
 }
 
 

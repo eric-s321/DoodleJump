@@ -7,13 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreMotion/CoreMotion.h>
 #import "Jumper.h"
 
 @interface GameView : UIView
 
 @property (strong, nonatomic) Jumper *jumper;
-@property (nonatomic) double tilt;
 
 -(void) update:(CADisplayLink *)sender;
+-(void) updateVelocity:(CMAccelerometerData *) accelData;
 
 @end

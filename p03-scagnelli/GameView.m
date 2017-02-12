@@ -10,7 +10,6 @@
 #import "GameView.h"
 
 @implementation GameView
-@synthesize tilt;
 @synthesize jumper;
 
 -(id)initWithCoder:(NSCoder *)aDecoder{
@@ -26,13 +25,24 @@
         UIImage *jumperImage = [UIImage imageNamed:@"mario.png"];
         jumper = [[Jumper alloc] initWithImage:jumperImage];
         [jumper setFrame:CGRectMake(bounds.size.width/2, bounds.size.height - 100, 60, 110)];
-        //[jumper setContentMode:UIViewContentModeScaleAspectFit];
         [jumper setDx:0];
         [jumper setDy:10];
         
         [self addSubview:jumper];
     }
     return self;
+}
+
+-(void) updateVelocity:(CMAccelerometerData *) accelData{
+    
+    //Apply tilt and limit to + or - 4
+    [jumper setDx:[jumper dx] + accelData.acceleration.x];
+    
+    if([jumper dx] > 4)
+        [jumper setDx:4];
+    if([jumper dx] < -4)
+        [jumper setDx:-4];
+
 }
 
 -(void) update:(CADisplayLink *)sender{
@@ -42,13 +52,6 @@
     CGRect bounds = [self bounds];
     
     [jumper setDy:[jumper dy] - .3];  //Apply "gravity" (make jumper fall)
-    
-    //Apply tilt and limit to + or - 5
-    [jumper setDx:[jumper dx] + tilt];
-    if ([jumper dx] > 5)
-        [jumper setDx:5];
-    if ([jumper dx] < -5)
-        [jumper setDx:-5];
     
     
     p.x += [jumper dx];

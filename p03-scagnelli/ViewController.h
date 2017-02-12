@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreMotion/CoreMotion.h>
 #import "GameView.h"
 
 @interface ViewController : UIViewController{
@@ -14,7 +15,6 @@
 }
 
 @property (strong, nonatomic) IBOutlet GameView *gameView;
--(IBAction)changeTilt:(id) sender;
 
 @end
 
