@@ -36,8 +36,10 @@
     }
     else{
         NSLog(@"Accelerometer Not available.");
-        exit(EXIT_FAILURE);
+    //    exit(EXIT_FAILURE);
     }
+    
+    [gameView generateBricks];
 }
 
 
