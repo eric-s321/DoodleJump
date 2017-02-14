@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <CoreMotion/CoreMotion.h>
 #import "Jumper.h"
+#import "ScoreBarView.h"
 
 typedef enum {
     ON_SCREEN_BRICKS = 0,
@@ -22,6 +23,7 @@ typedef enum {
 }
 
 @property (strong, nonatomic) Jumper *jumper;
+@property (strong, nonatomic) IBOutlet ScoreBarView *scoreBar;
 
 -(void) update:(CADisplayLink *)sender;
 -(void) updateVelocity:(CMAccelerometerData *) accelData;

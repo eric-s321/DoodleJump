@@ -48,6 +48,7 @@
     
 //    NSLog(@"bricks now has %lu bricks", (unsigned long)[bricks count]);
     
+    NSLog(@"Score is %d", [_scoreBar.scoreLabel.text intValue]);
     CGPoint p = [jumper center];
     CGRect jumperBounds = [jumper bounds];
     CGRect bounds = [self bounds];
@@ -195,6 +196,7 @@
 -(void) moveBricksDown{
     
     numPixelsCurrentBricksMoved += 2;  //Each call to moveBricksDown moves all bricks down 1 pixel
+    [_scoreBar incrementScore];
     
     for(UIImageView *brick in bricks){
         CGPoint newPos = [brick center];
@@ -210,7 +212,8 @@
 }
 
 -(void) stopMovingBricks{
-    [brickMovementTimer invalidate];
+    if([brickMovementTimer isValid])
+        [brickMovementTimer invalidate];
 }
 
 
@@ -226,5 +229,6 @@
             [bricks removeObject:brick];
     }
 }
+
 
 @end

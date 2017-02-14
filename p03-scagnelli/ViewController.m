@@ -15,10 +15,11 @@
 @end
 
 @implementation ViewController
-@synthesize gameView;
+@synthesize gameView, scoreBar;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     // Do any additional setup after loading the view, typically from a nib.
     displayLink = [CADisplayLink displayLinkWithTarget:gameView selector:@selector(update:)];
     [displayLink setPreferredFramesPerSecond:50];
@@ -41,12 +42,28 @@
     
     [gameView generateBricks:ON_SCREEN_BRICKS];
     [gameView generateBricks:ABOVE_SCREEN_BRICKS];
+    
+    //Start incrementing score
+    
+    /*
+    scoreTimer = [NSTimer scheduledTimerWithTimeInterval:.1 target:scoreBar selector:@selector(incrementScore)
+                                 userInfo:nil repeats:YES];
+     */
 }
 
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)pauseGame:(id)sender{
+    [gameView stopMovingBricks];
+    displayLink.paused = YES;
+}
+
+-(IBAction) resumeGame:(UIStoryboardSegue *)segue{
+    displayLink.paused = NO;
 }
 
 
