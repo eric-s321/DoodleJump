@@ -10,19 +10,25 @@
 #import <CoreMotion/CoreMotion.h>
 #import "Jumper.h"
 
+typedef enum {
+    ON_SCREEN_BRICKS = 0,
+    ABOVE_SCREEN_BRICKS = 1
+}BrickGeneratorMode;
+
 @interface GameView : UIView{
     NSMutableArray *bricks;
     NSTimer *brickMovementTimer;
+    int numPixelsCurrentBricksMoved;
 }
 
 @property (strong, nonatomic) Jumper *jumper;
 
 -(void) update:(CADisplayLink *)sender;
 -(void) updateVelocity:(CMAccelerometerData *) accelData;
--(void) generateBricks;
+-(void) generateBricks:(BrickGeneratorMode) mode;
 -(bool) bricksOverlap:(UIImageView *) newBrick;
 -(void) moveBricksDown;
--(void)startMovingBricks;
--(void)stopMovingBricks;
+-(void) startMovingBricks;
+-(void) stopMovingBricks;
 
 @end

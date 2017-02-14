@@ -39,7 +39,8 @@
     //    exit(EXIT_FAILURE);
     }
     
-    [gameView generateBricks];
+    [gameView generateBricks:ON_SCREEN_BRICKS];
+    [gameView generateBricks:ABOVE_SCREEN_BRICKS];
 }
 
 
