@@ -27,6 +27,7 @@
         bricks = [[NSMutableArray alloc] init];
         
         [self addSubview:jumper];
+        
         numPixelsCurrentBricksMoved = 0;
     }
     return self;
@@ -97,14 +98,10 @@
     //Get new jumperBottom incase we changed it
     jumperBottom = p.y + jumperBounds.size.height / 2;
     
-    // jumper is above the halfway point on the screen and the bricks are staying still
-    if(jumperBottom <= midwayHeight && ![brickMovementTimer isValid]){
-        [self startMovingBricks];
-    }
-    
-    // jumper is below the halfway point on the screen and the bricks are still moving
-    if(jumperBottom > midwayHeight && [brickMovementTimer isValid]){
-        [self stopMovingBricks];
+    // jumper is above the halfway point
+    if(jumperBottom <= midwayHeight){
+        p.y += midwayHeight - jumperBottom;  //place jumper so feet are midway on screen
+        [self moveBricksDown:midwayHeight - jumperBottom];
     }
     
     if(numPixelsCurrentBricksMoved >= bounds.size.height){ //The bricks have been moved 1 screenlength down
@@ -193,19 +190,19 @@
     return NO;
 }
 
--(void) moveBricksDown{
+-(void) moveBricksDown:(int) distanceToMove{
     
-    numPixelsCurrentBricksMoved += 2;  //Each call to moveBricksDown moves all bricks down 1 pixel
+    numPixelsCurrentBricksMoved += distanceToMove;  //Each call to moveBricksDown moves all bricks down 1 pixel
     [_scoreBar incrementScore];
     
     for(UIImageView *brick in bricks){
         CGPoint newPos = [brick center];
-        newPos.y += 2;   //Move each brick 5 pixels down the screen
+        newPos.y += distanceToMove;   //Move each brick distanceToMove pixels down the screen
         [brick setCenter:newPos];
     }
-    
 }
 
+/*
 -(void) startMovingBricks{
     brickMovementTimer = [NSTimer scheduledTimerWithTimeInterval:.005 target:self
               selector:@selector(moveBricksDown) userInfo:nil repeats:YES];
@@ -215,6 +212,7 @@
     if([brickMovementTimer isValid])
         [brickMovementTimer invalidate];
 }
+ */
 
 
 // deletes the bricks that are no longer visible on the screen from the bricks array
@@ -229,6 +227,5 @@
             [bricks removeObject:brick];
     }
 }
-
 
 @end

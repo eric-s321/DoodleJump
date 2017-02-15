@@ -18,7 +18,6 @@ typedef enum {
 
 @interface GameView : UIView{
     NSMutableArray *bricks;
-    NSTimer *brickMovementTimer;
     int numPixelsCurrentBricksMoved;
 }
 
@@ -29,8 +28,11 @@ typedef enum {
 -(void) updateVelocity:(CMAccelerometerData *) accelData;
 -(void) generateBricks:(BrickGeneratorMode) mode;
 -(bool) bricksOverlap:(UIImageView *) newBrick;
--(void) moveBricksDown;
+-(void) moveBricksDown:(int)distanceToMove;
+
+/*
 -(void) startMovingBricks;
 -(void) stopMovingBricks;
+*/
 
 @end

@@ -15,12 +15,20 @@
 @end
 
 @implementation ViewController
-@synthesize gameView, scoreBar;
+@synthesize gameView;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // Do any additional setup after loading the view, typically from a nib.
+    /*
+    // Disable landscape view
+    NSNumber *value = [NSNumber numberWithInt:UIInterfaceOrientationPortrait];
+    [[UIDevice currentDevice] setValue:value forKey:@"orientation"];
+     */
+    
+    //Stop screen from falling asleep
+    [UIApplication sharedApplication].idleTimerDisabled = YES;
+    
     displayLink = [CADisplayLink displayLinkWithTarget:gameView selector:@selector(update:)];
     [displayLink setPreferredFramesPerSecond:50];
     [displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
@@ -33,7 +41,6 @@
                 withHandler:^(CMAccelerometerData * _Nullable data, NSError * _Nullable error) {
                     [gameView performSelectorOnMainThread:@selector(updateVelocity:) withObject:data waitUntilDone:NO];
                 }];
-    
     }
     else{
         NSLog(@"Accelerometer Not available.");
@@ -43,12 +50,6 @@
     [gameView generateBricks:ON_SCREEN_BRICKS];
     [gameView generateBricks:ABOVE_SCREEN_BRICKS];
     
-    //Start incrementing score
-    
-    /*
-    scoreTimer = [NSTimer scheduledTimerWithTimeInterval:.1 target:scoreBar selector:@selector(incrementScore)
-                                 userInfo:nil repeats:YES];
-     */
 }
 
 
@@ -58,13 +59,12 @@
 }
 
 - (IBAction)pauseGame:(id)sender{
-    [gameView stopMovingBricks];
+    //[gameView stopMovingBricks];
     displayLink.paused = YES;
 }
 
 -(IBAction) resumeGame:(UIStoryboardSegue *)segue{
     displayLink.paused = NO;
 }
-
 
 @end

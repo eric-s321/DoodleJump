@@ -17,7 +17,6 @@
 }
 
 @property (strong, nonatomic) IBOutlet GameView *gameView;
-@property (strong, nonatomic) IBOutlet ScoreBarView *scoreBar;
 
 -(IBAction) pauseGame:(id)sender;
 -(IBAction) resumeGame:(UIStoryboardSegue *)segue;
