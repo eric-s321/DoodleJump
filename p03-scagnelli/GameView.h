@@ -10,6 +10,13 @@
 #import <CoreMotion/CoreMotion.h>
 #import "Jumper.h"
 #import "ScoreBarView.h"
+#import "SegueDelegate.h"
+
+#define MAX_BRICKS_1 2
+#define MAX_BRICKS_2 3
+#define MAX_BRICKS_3 3
+#define MAX_BRICKS_4 2
+#define MAX_BRICKS_5 3
 
 typedef enum {
     ON_SCREEN_BRICKS = 0,
@@ -19,6 +26,13 @@ typedef enum {
 @interface GameView : UIView{
     NSMutableArray *bricks;
     int numPixelsCurrentBricksMoved;
+    id<SegueDelegate> segueDelegate;
+    int jumpLength;
+    int bricksInRegion1;
+    int bricksInRegion2;
+    int bricksInRegion3;
+    int bricksInRegion4;
+    int bricksInRegion5;
 }
 
 @property (strong, nonatomic) Jumper *jumper;
@@ -29,6 +43,7 @@ typedef enum {
 -(void) generateBricks:(BrickGeneratorMode) mode;
 -(bool) bricksOverlap:(UIImageView *) newBrick;
 -(void) moveBricksDown:(int)distanceToMove;
+-(IBAction)callSegue:(id)sender;
 
 /*
 -(void) startMovingBricks;

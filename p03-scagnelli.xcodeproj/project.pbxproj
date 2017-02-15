@@ -38,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B64FF9F71E54E16400DC88CF /* SegueDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SegueDelegate.h; sourceTree = "<group>"; };
 		B66D3A9D1E53978D0015ED11 /* ScoreBarView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScoreBarView.h; sourceTree = "<group>"; };
 		B66D3A9E1E5398010015ED11 /* ScoreBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScoreBarView.m; sourceTree = "<group>"; };
 		B6CAB4101E4D6B6800D7F337 /* p03-scagnelli.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "p03-scagnelli.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -116,6 +117,7 @@
 				B6CAB41A1E4D6B6800D7F337 /* ViewController.m */,
 				B66D3A9D1E53978D0015ED11 /* ScoreBarView.h */,
 				B66D3A9E1E5398010015ED11 /* ScoreBarView.m */,
+				B64FF9F71E54E16400DC88CF /* SegueDelegate.h */,
 				B6CAB4481E4D6D2E00D7F337 /* GameView.h */,
 				B6CAB4461E4D6D2000D7F337 /* GameView.m */,
 				B6CAB4491E4D6F1800D7F337 /* Jumper.h */,

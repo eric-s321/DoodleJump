@@ -67,4 +67,11 @@
     displayLink.paused = NO;
 }
 
+
+-(void) gameOverSegue{
+    NSLog(@"In the segue in view controller");
+    [self performSegueWithIdentifier:@"showGameOverScreen" sender:self];
+}
+
+
 @end

@@ -10,8 +10,9 @@
 #import <CoreMotion/CoreMotion.h>
 #import "GameView.h"
 #import "ScoreBarView.h"
+#import "SegueDelegate.h"
 
-@interface ViewController : UIViewController{
+@interface ViewController : UIViewController <SegueDelegate> {
     CADisplayLink *displayLink;
     NSTimer *scoreTimer;
 }
@@ -20,6 +21,7 @@
 
 -(IBAction) pauseGame:(id)sender;
 -(IBAction) resumeGame:(UIStoryboardSegue *)segue;
+-(void) gameOverSegue;
 
 @end
 
