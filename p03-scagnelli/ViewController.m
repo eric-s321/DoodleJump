@@ -8,11 +8,6 @@
 
 #import "ViewController.h"
 
-@interface ViewController (){
-    CMMotionManager *motionManager;
-}
-
-@end
 
 @implementation ViewController
 @synthesize gameView;
@@ -50,6 +45,12 @@
     [gameView generateBricks:ON_SCREEN_BRICKS];
     [gameView generateBricks:ABOVE_SCREEN_BRICKS];
     
+    /*
+        Once ViewController conforms to SegueDelegate by implementing gameOverSegue, ViewController IS a SegueDelegate.
+        Thus we pass an instance of ViewController to be the segueDelegate in GameView so that we can switch UIViewControllers
+        from GameView.
+    */
+    [gameView setSegueDelegate:self];
 }
 
 
@@ -69,8 +70,9 @@
 
 
 -(void) gameOverSegue{
-    NSLog(@"In the segue in view controller");
+//    NSLog(@"In the segue in view controller");
     [self performSegueWithIdentifier:@"showGameOverScreen" sender:self];
+    displayLink.paused = YES;
 }
 
 

@@ -10,6 +10,7 @@
 #import "ScoreBarView.h"
 
 @implementation ScoreBarView
+@synthesize scoreInt;
 
 -(id)init{
     self = [super init];

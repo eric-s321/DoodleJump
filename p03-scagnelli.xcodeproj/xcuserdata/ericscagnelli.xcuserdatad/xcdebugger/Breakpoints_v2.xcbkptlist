@@ -9,14 +9,14 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "p03-scagnelli/ViewController.h"
-            timestampString = "508880815.97801"
+            filePath = "p03-scagnelli/GameView.h"
+            timestampString = "509004943.159557"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "24"
-            endingLineNumber = "24"
-            landmarkName = "-gameOverSegue"
-            landmarkType = "6">
+            startingLineNumber = "31"
+            endingLineNumber = "31"
+            landmarkName = "@interface GameView"
+            landmarkType = "2">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -26,12 +26,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "p03-scagnelli/GameView.m"
-            timestampString = "508889892.246768"
+            timestampString = "509005091.029629"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "355"
-            endingLineNumber = "355"
-            landmarkName = "-callSegue:"
+            startingLineNumber = "89"
+            endingLineNumber = "89"
+            landmarkName = "-update:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "p03-scagnelli/GameView.m"
+            timestampString = "509005162.614139"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "91"
+            endingLineNumber = "91"
+            landmarkName = "-update:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

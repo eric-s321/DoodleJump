@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreMotion/CoreMotion.h>
+#import <AudioToolbox/AudioToolbox.h>
 #import "Jumper.h"
 #import "ScoreBarView.h"
 #import "SegueDelegate.h"
+#import "Universe.h"
 
 #define MAX_BRICKS_1 2
 #define MAX_BRICKS_2 3
@@ -33,6 +35,7 @@ typedef enum {
     int bricksInRegion3;
     int bricksInRegion4;
     int bricksInRegion5;
+    SystemSoundID sound;
 }
 
 @property (strong, nonatomic) Jumper *jumper;
@@ -43,11 +46,6 @@ typedef enum {
 -(void) generateBricks:(BrickGeneratorMode) mode;
 -(bool) bricksOverlap:(UIImageView *) newBrick;
 -(void) moveBricksDown:(int)distanceToMove;
--(IBAction)callSegue:(id)sender;
-
-/*
--(void) startMovingBricks;
--(void) stopMovingBricks;
-*/
+-(void) setSegueDelegate:(id<SegueDelegate>)delegate;
 
 @end

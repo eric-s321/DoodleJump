@@ -18,16 +18,27 @@
     
     if(self){
         CGRect bounds = [self bounds];
-        NSLog(@"y length of screen is %.2f", bounds.size.height);
         
+//        [self bringSubviewToFront:_scoreBar];
+//        _scoreBar.layer.zPosition = MAXFLOAT;
         UIImage *jumperImage = [UIImage imageNamed:@"mario.png"];
         jumper = [[Jumper alloc] initWithImage:jumperImage];
-        [jumper setFrame:CGRectMake(bounds.size.width/2, bounds.size.height - 100, 60, 110)];
+        [jumper setFrame:CGRectMake(bounds.size.width/2, bounds.size.height - 200, 60, 110)];
         [jumper setDx:0];
         [jumper setDy:10];
         bricks = [[NSMutableArray alloc] init];
         
+        //Create brick right under where jumper spawns so he doesn't die right away
+        UIImage *brickImage = [UIImage imageNamed:@"bricks.jpeg"];
+        UIImageView *brick = [[UIImageView alloc] initWithImage:brickImage];
+        float height = 20;
+        float width = bounds.size.width * .3;
+        [brick setFrame:CGRectMake(bounds.size.width/2 - 25, bounds.size.height - 100, width, height)];
+        
+        [bricks addObject:brick];
+        
         [self addSubview:jumper];
+        [self addSubview:brick];
         
         numPixelsCurrentBricksMoved = 0;
         
@@ -57,22 +68,12 @@
 
 -(void) update:(CADisplayLink *)sender{
     
-//    NSLog(@"bricks now has %lu bricks", (unsigned long)[bricks count]);
-    
-//    NSLog(@"Score is %d", [_scoreBar.scoreLabel.text intValue]);
     CGPoint p = [jumper center];
     CGRect jumperBounds = [jumper bounds];
     CGRect bounds = [self bounds];
     double midwayHeight = bounds.size.height / 2;
     
     [jumper setDy:[jumper dy] - .3];  //Apply "gravity" (make jumper fall)
-    
-    
-    
-    if([jumper dy] > -.3 && [jumper dy] < 0){ //Jumper is approx at top of jump
-    //    NSLog(@"Velocity is 0");
-//        NSLog(@"At the top of the jump marios y pos is %.4f", p.y);
-    }
     
     
     p.x += [jumper dx];
@@ -84,14 +85,17 @@
     bottomOfJumper.y = jumperBottom;
     
     
-    //We have hit the bottom of the screen 
+    //We have hit the bottom of the screen - present game over screen
     if(jumperBottom >= bounds.size.height){
-        p.y = bounds.size.height - jumperBounds.size.height / 2;  //Set at the bottom of screen
-        [jumper setDy:10];  //Give positive velocity
-        /*
-        NSLog(@"Calling Segue delegate's gameOverSegue method");
+        // store current score in the Universe class so it can be displayed on game over view controller.
+        [[Universe sharedInstance] setCurrentScore:[_scoreBar scoreInt]];
+        
+        NSString *soundPath = [[NSBundle mainBundle] pathForResource:@"mario_gameover_sound" ofType:@"wav"];
+        NSURL *soundURL = [NSURL fileURLWithPath:soundPath];
+        AudioServicesCreateSystemSoundID((__bridge CFURLRef)soundURL, &sound);
+        AudioServicesPlaySystemSound(sound);
+        
         [segueDelegate gameOverSegue];
-         */
     }
     
     // If we have gone too far left, or too far right, wrap around
@@ -106,7 +110,12 @@
         for (UIImageView *brick in bricks){
             CGRect brickFrame = [brick frame];
             if(CGRectContainsPoint(brickFrame, bottomOfJumper)){
-  //              NSLog(@"When mario hit the brick his y pos is %.4f", p.y);
+                //Play jump sound
+                NSString *soundPath = [[NSBundle mainBundle] pathForResource:@"mario_jump_sound" ofType:@"wav"];
+                NSURL *soundURL = [NSURL fileURLWithPath:soundPath];
+                AudioServicesCreateSystemSoundID((__bridge CFURLRef)soundURL, &sound);
+                AudioServicesPlaySystemSound(sound);
+                
                 [jumper setDy:10];
             }
         }
@@ -135,7 +144,6 @@
 -(void) generateBricks:(BrickGeneratorMode) mode{
     CGRect bounds = [self bounds];
     float height = 20;
-    bool lowBrick = NO;
     
     int i = 0;
     bricksInRegion1 = 0;
@@ -144,7 +152,6 @@
     bricksInRegion4 = 0;
     bricksInRegion5 = 0;
     while(![self allBrickRegionsFull]){
-//    for (int i = 0; i < 10; i++){
         float width;
         //Create bricks of 2 different widths
         if(i % 2 == 0)
@@ -165,10 +172,7 @@
             
             int yCoord;
             if(mode == ON_SCREEN_BRICKS){
-//                NSLog(@"ON SCREEN");
-                //yCoord = arc4random() % (int)bounds.size.height * .8;
                 yCoord = arc4random() % (int)bounds.size.height;
-  //              NSLog(@"y coord is %d", yCoord);
                 if(yCoord >= 0 && yCoord < bounds.size.height / 5)
                     brickRegionFull = [self brickRegionFull:1 numBricks:bricksInRegion1 + 1];
                 else if(yCoord >= bounds.size.height / 5 * 1 && yCoord < bounds.size.height / 5 * 2)
@@ -181,8 +185,6 @@
                     brickRegionFull = [self brickRegionFull:5 numBricks:bricksInRegion5 + 1];
             }
             else if(mode == ABOVE_SCREEN_BRICKS){
-//                NSLog(@"ABOVE SCREEN");
-//                yCoord = arc4random() % (int)bounds.size.height * .8;
                 yCoord = arc4random() % (int)bounds.size.height;
                 if(yCoord >= 0 && yCoord < bounds.size.height / 5)
                     brickRegionFull = [self brickRegionFull:1 numBricks:bricksInRegion1 + 1];
@@ -205,8 +207,6 @@
         if(mode == ABOVE_SCREEN_BRICKS)
             finalYCoord *= -1;  //invert back to on screen coords
         
-  //      NSLog(@"Final y coord is %.2f", finalYCoord);
-        
         if(finalYCoord >= 0 && finalYCoord < bounds.size.height / 5)
             bricksInRegion1++;
         else if(finalYCoord >= bounds.size.height / 5 * 1 && finalYCoord < bounds.size.height / 5 * 2)
@@ -217,44 +217,12 @@
             bricksInRegion4++;
         else if(finalYCoord >= bounds.size.height / 5 * 4 && finalYCoord < bounds.size.height)
             bricksInRegion5++;
-/*
-        NSLog(@"bricks in region1: %d", bricksInRegion1);
-        NSLog(@"bricks in region2: %d", bricksInRegion2);
-        NSLog(@"bricks in region3: %d", bricksInRegion3);
-        NSLog(@"bricks in region4: %d", bricksInRegion4);
-        NSLog(@"bricks in region5: %d", bricksInRegion5);
- */
-        // brick is in lower part of screen where jumper can reach it
-//        if(fabs([brick frame].origin.y - bounds.size.height) <= [jumper frame].size.height)
-//            lowBrick = YES;
         
         [bricks addObject:brick];
         [self addSubview:brick];
         i++;
-//    }
     }
     
-/*
-    if(!lowBrick){  //We never added a low brick - add one manually
-        
-        int width = bounds.size.width * .3;
-        UIImage *brickImage = [UIImage imageNamed:@"bricks.jpeg"];
-        UIImageView *brick = [[UIImageView alloc] initWithImage:brickImage];
-        int xCoord = arc4random() % (int)bounds.size.width * .8;
- 
-        int yCoord;
-        if(mode == ON_SCREEN_BRICKS)
-            yCoord = bounds.size.height - [jumper frame].size.height / 2;
-        else if(mode == ABOVE_SCREEN_BRICKS){
-            yCoord = bounds.size.height - [jumper frame].size.height / 2;
-            yCoord *= -1;  //invert bricks pos so they are above screen
-        }
-        
-        [brick setFrame:CGRectMake(xCoord, yCoord, width, height)];
-        [bricks addObject:brick];
-        [self addSubview:brick];
-    }
-*/
 }
 
 -(bool) brickRegionFull:(int) region numBricks:(int) numBricks{
@@ -282,15 +250,8 @@
                 regionFull = YES;
             break;
     }
- /*
-    NSLog(@"Region %d would have %d", region, numBricks);
-    if (regionFull)
-        NSLog(@"returning true");
-    else
-        NSLog(@"returning false");
-  */
+    
     return regionFull;
-
 }
 
 -(bool) allBrickRegionsFull{
@@ -325,18 +286,6 @@
     }
 }
 
-/*
--(void) startMovingBricks{
-    brickMovementTimer = [NSTimer scheduledTimerWithTimeInterval:.005 target:self
-              selector:@selector(moveBricksDown) userInfo:nil repeats:YES];
-}
-
--(void) stopMovingBricks{
-    if([brickMovementTimer isValid])
-        [brickMovementTimer invalidate];
-}
- */
-
 // deletes the bricks that are no longer visible on the screen from the bricks array
 -(void) removeOldBricks{
     CGRect screenBounds = [self frame];
@@ -350,9 +299,8 @@
     }
 }
 
--(IBAction)callSegue:(id)sender{
-    NSLog(@"Calling Segue");
-    [segueDelegate gameOverSegue];
+-(void) setSegueDelegate:(id<SegueDelegate>)delegate{
+    segueDelegate = delegate;
 }
 
 @end

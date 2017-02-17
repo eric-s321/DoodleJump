@@ -15,13 +15,13 @@
 @interface ViewController : UIViewController <SegueDelegate> {
     CADisplayLink *displayLink;
     NSTimer *scoreTimer;
+    CMMotionManager *motionManager;
+    id<SegueDelegate> segueDelegate;
 }
 
 @property (strong, nonatomic) IBOutlet GameView *gameView;
 
 -(IBAction) pauseGame:(id)sender;
 -(IBAction) resumeGame:(UIStoryboardSegue *)segue;
--(void) gameOverSegue;
 
 @end
-

@@ -8,11 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ScoreBarView : UIView{
-    int scoreInt;
-}
+@interface ScoreBarView : UIView
 
 @property (strong, nonatomic) IBOutlet UILabel *scoreLabel;
+@property (nonatomic) int scoreInt;
 
 -(void) incrementScore;
 
