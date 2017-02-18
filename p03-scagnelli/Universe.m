@@ -49,6 +49,14 @@ static Universe *singleton = nil;
     return [[AVAudioPlayer alloc] init];
 }
 
+-(void)save{
+    
+}
+
+-(void)load{
+    
+}
+
 
 @end
 

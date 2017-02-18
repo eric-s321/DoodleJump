@@ -33,7 +33,6 @@
         greenMushrooms = [[NSMutableArray alloc] init];
         redMushrooms = [[NSMutableArray alloc] init];
         gameOver = NO;
-        NSLog(@"Setting gameover to no");
         
         //Create brick right under where jumper spawns so he doesn't die right away
         UIImage *brickImage = [UIImage imageNamed:@"bricks.jpeg"];
@@ -90,7 +89,6 @@
     CGPoint bottomOfJumper = p;
     bottomOfJumper.y = jumperBottom;
     
-    
     //We have hit the bottom of the screen - present game over screen
     if(jumperBottom >= bounds.size.height){
         // store current score in the Universe class so it can be displayed on game over view controller.
@@ -119,13 +117,28 @@
         for (UIImageView *brick in bricks){
             CGRect brickFrame = [brick frame];
             if(CGRectContainsPoint(brickFrame, bottomOfJumper)){
-                //Play jump sound
-                NSString *soundPath = [[NSBundle mainBundle] pathForResource:@"mario_jump_sound" ofType:@"wav"];
-                NSURL *soundURL = [NSURL fileURLWithPath:soundPath];
-                AudioServicesCreateSystemSoundID((__bridge CFURLRef)soundURL, &sound);
-                AudioServicesPlaySystemSound(sound);
                 
-                [jumper setDy:10];
+                if(jumper.mode == MARIO_MODE){
+                    NSString *soundPath = [[NSBundle mainBundle] pathForResource:@"mario_jump_sound" ofType:@"wav"];
+                    NSURL *soundURL = [NSURL fileURLWithPath:soundPath];
+                    AudioServicesCreateSystemSoundID((__bridge CFURLRef)soundURL, &sound);
+                    AudioServicesPlaySystemSound(sound);
+                    [jumper setDy:10];
+                }
+                else if(jumper.mode == GIANT_MARIO_MODE){
+                    NSString *soundPath = [[NSBundle mainBundle] pathForResource:@"giant_mario_jump" ofType:@"wav"];
+                    NSURL *soundURL = [NSURL fileURLWithPath:soundPath];
+                    AudioServicesCreateSystemSoundID((__bridge CFURLRef)soundURL, &sound);
+                    AudioServicesPlaySystemSound(sound);
+                    [jumper setDy:20];
+                }
+                else if(jumper.mode == LUIGI_MODE){
+                    NSString *soundPath = [[NSBundle mainBundle] pathForResource:@"luigi_jump_sound" ofType:@"wav"];
+                    NSURL *soundURL = [NSURL fileURLWithPath:soundPath];
+                    AudioServicesCreateSystemSoundID((__bridge CFURLRef)soundURL, &sound);
+                    AudioServicesPlaySystemSound(sound);
+                    [jumper setDy:15];
+                }
             }
         }
     }
@@ -183,7 +196,7 @@
         CGRect jumperFrame = [jumper frame];
         if(jumper.mode == MARIO_MODE && CGRectIntersectsRect(greenMushroomFrame, jumperFrame)){
             //Play sound
-            NSString *soundPath = [[NSBundle mainBundle] pathForResource:@"mario_powerup" ofType:@"wav"];
+            NSString *soundPath = [[NSBundle mainBundle] pathForResource:@"luigi_sound" ofType:@"wav"];
             NSURL *soundURL = [NSURL fileURLWithPath:soundPath];
             AudioServicesCreateSystemSoundID((__bridge CFURLRef)soundURL, &sound);
             AudioServicesPlaySystemSound(sound);
@@ -518,21 +531,24 @@
 
 -(void) displayMario{
     if(jumper.mode != MARIO_MODE && !gameOver){
-//        NSLog(@"Display Mario called");
-        NSString *soundPath = [[NSBundle mainBundle] pathForResource:@"mario_powerdown" ofType:@"wav"];
-        NSURL *soundURL = [NSURL fileURLWithPath:soundPath];
-        AudioServicesCreateSystemSoundID((__bridge CFURLRef)soundURL, &sound);
-        AudioServicesPlaySystemSound(sound);
         
         if(jumper.mode == GIANT_MARIO_MODE){
-//            NSLog(@"Should be getting tiny");
+            NSString *soundPath = [[NSBundle mainBundle] pathForResource:@"mario_powerdown" ofType:@"wav"];
+            NSURL *soundURL = [NSURL fileURLWithPath:soundPath];
+            AudioServicesCreateSystemSoundID((__bridge CFURLRef)soundURL, &sound);
+            AudioServicesPlaySystemSound(sound);
             CGRect frame = [jumper frame];
             [jumper setFrame:CGRectMake(frame.origin.x, frame.origin.y + frame.size.height / 2,
                                     frame.size.width / 2, frame.size.height / 2)];
         }
         
-        if(jumper.mode == LUIGI_MODE)
+        if(jumper.mode == LUIGI_MODE){
+            NSString *soundPath = [[NSBundle mainBundle] pathForResource:@"mario_name" ofType:@"wav"];
+            NSURL *soundURL = [NSURL fileURLWithPath:soundPath];
+            AudioServicesCreateSystemSoundID((__bridge CFURLRef)soundURL, &sound);
+            AudioServicesPlaySystemSound(sound);
             [jumper setImage:[UIImage imageNamed:@"mario.png"]];
+        }
         
         jumper.mode = MARIO_MODE;
     }

@@ -19,6 +19,7 @@
 
 -(void)setAVPlayer:(AVAudioPlayer *) player;
 -(AVAudioPlayer *)getAVPlayer;
-
+-(void)save;
+-(void)load;
 
 @end

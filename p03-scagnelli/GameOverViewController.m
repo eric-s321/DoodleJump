@@ -17,13 +17,4 @@
     scoreLabel.text = [NSString stringWithFormat:@"Score: %d", score];
 }
 
-/*
--(void)viewDidAppear:(BOOL)animated{
-    NSLog(@"In view did appear");
-    int score = [[Universe sharedInstance] currentScore];
-    scoreLabel.text = [NSString stringWithFormat:@"Score: %d", score];
-    
-}
- */
-
 @end
