@@ -14,11 +14,16 @@
 #import "SegueDelegate.h"
 #import "Universe.h"
 
+
 #define MAX_BRICKS_1 2
-#define MAX_BRICKS_2 3
-#define MAX_BRICKS_3 3
-#define MAX_BRICKS_4 2
-#define MAX_BRICKS_5 3
+#define MAX_BRICKS_2 1
+#define MAX_BRICKS_3 1
+#define MAX_BRICKS_4 1
+#define MAX_BRICKS_5 2
+#define MAX_BRICKS_6 1
+#define MAX_BRICKS_7 2
+#define MAX_BRICKS_8 1
+#define MAX_BRICKS_9 1
 
 typedef enum {
     ON_SCREEN_BRICKS = 0,
@@ -38,6 +43,10 @@ typedef enum {
     int bricksInRegion3;
     int bricksInRegion4;
     int bricksInRegion5;
+    int bricksInRegion6;
+    int bricksInRegion7;
+    int bricksInRegion8;
+    int bricksInRegion9;
     SystemSoundID sound;
     bool gameOver;
 }

@@ -75,19 +75,12 @@
 
 -(void) update:(CADisplayLink *)sender{
     
-    /*
-    if(_scoreBar.scoreInt > 200){
-        [jumper setImage:[UIImage imageNamed:@"Luigi.png"]];
-    }
-     */
-    
     CGPoint p = [jumper center];
     CGRect jumperBounds = [jumper bounds];
     CGRect bounds = [self bounds];
     double midwayHeight = bounds.size.height / 2;
     
     [jumper setDy:[jumper dy] - .3];  //Apply "gravity" (make jumper fall)
-    
     
     p.x += [jumper dx];
     p.y -= [jumper dy];  // Move jumper in direction of their y velocity
@@ -126,7 +119,6 @@
         for (UIImageView *brick in bricks){
             CGRect brickFrame = [brick frame];
             if(CGRectContainsPoint(brickFrame, bottomOfJumper)){
-                
                 //Play jump sound
                 NSString *soundPath = [[NSBundle mainBundle] pathForResource:@"mario_jump_sound" ofType:@"wav"];
                 NSURL *soundURL = [NSURL fileURLWithPath:soundPath];
@@ -248,12 +240,16 @@
     float height = 20;
     
     int i = 0;
-    int NUM_REGIONS = 5;
+    int NUM_REGIONS = 9;   //This is enough to not allow bricks to spawn too far apart
     bricksInRegion1 = 0;
     bricksInRegion2 = 0;
     bricksInRegion3 = 0;
     bricksInRegion4 = 0;
     bricksInRegion5 = 0;
+    bricksInRegion6 = 0;
+    bricksInRegion7 = 0;
+    bricksInRegion8 = 0;
+    bricksInRegion9 = 0;
     while(![self allBrickRegionsFull]){
         float width;
         //Create bricks of 2 different widths
@@ -283,8 +279,16 @@
                 brickRegionFull = [self brickRegionFull:3 numBricks:bricksInRegion3 + 1];
             else if(yCoord >= bounds.size.height / NUM_REGIONS * 3 && yCoord < bounds.size.height / NUM_REGIONS * 4)
                 brickRegionFull = [self brickRegionFull:4 numBricks:bricksInRegion4 + 1];
-            else if(yCoord >= bounds.size.height / NUM_REGIONS * 4 && yCoord < bounds.size.height)
+            else if(yCoord >= bounds.size.height / NUM_REGIONS * 4 && yCoord < bounds.size.height / NUM_REGIONS * 5)
                 brickRegionFull = [self brickRegionFull:5 numBricks:bricksInRegion5 + 1];
+            else if(yCoord >= bounds.size.height / NUM_REGIONS * 5 && yCoord < bounds.size.height / NUM_REGIONS * 6)
+                brickRegionFull = [self brickRegionFull:6 numBricks:bricksInRegion6 + 1];
+            else if(yCoord >= bounds.size.height / NUM_REGIONS * 6 && yCoord < bounds.size.height / NUM_REGIONS * 7)
+                brickRegionFull = [self brickRegionFull:7 numBricks:bricksInRegion7 + 1];
+            else if(yCoord >= bounds.size.height / NUM_REGIONS * 7 && yCoord < bounds.size.height / NUM_REGIONS * 8)
+                brickRegionFull = [self brickRegionFull:8 numBricks:bricksInRegion8 + 1];
+            else if(yCoord >= bounds.size.height / NUM_REGIONS * 8 && yCoord < bounds.size.height)
+                brickRegionFull = [self brickRegionFull:9 numBricks:bricksInRegion9 + 1];
             
             if(mode == ABOVE_SCREEN_BRICKS)
                 yCoord *= -1;
@@ -305,8 +309,16 @@
             bricksInRegion3++;
         else if(finalYCoord >= bounds.size.height / NUM_REGIONS * 3 && finalYCoord < bounds.size.height / NUM_REGIONS * 4)
             bricksInRegion4++;
-        else if(finalYCoord >= bounds.size.height / NUM_REGIONS * 4 && finalYCoord < bounds.size.height)
+        else if(finalYCoord >= bounds.size.height / NUM_REGIONS * 4 && finalYCoord < bounds.size.height / NUM_REGIONS * 5)
             bricksInRegion5++;
+        else if(finalYCoord >= bounds.size.height / NUM_REGIONS * 5 && finalYCoord < bounds.size.height / NUM_REGIONS * 6)
+            bricksInRegion6++;
+        else if(finalYCoord >= bounds.size.height / NUM_REGIONS * 6 && finalYCoord < bounds.size.height / NUM_REGIONS * 7)
+            bricksInRegion7++;
+        else if(finalYCoord >= bounds.size.height / NUM_REGIONS * 7 && finalYCoord < bounds.size.height / NUM_REGIONS * 8)
+            bricksInRegion8++;
+        else if(finalYCoord >= bounds.size.height / NUM_REGIONS * 8 && finalYCoord < bounds.size.height)
+            bricksInRegion9++;
         
         //Randomly generate coins and mushrooms
         int coinProb = 8;
@@ -386,6 +398,22 @@
             if (numBricks > MAX_BRICKS_5)
                 regionFull = YES;
             break;
+        case 6:
+            if (numBricks > MAX_BRICKS_6)
+                regionFull = YES;
+            break;
+        case 7:
+            if (numBricks > MAX_BRICKS_7)
+                regionFull = YES;
+            break;
+        case 8:
+            if (numBricks > MAX_BRICKS_8)
+                regionFull = YES;
+            break;
+        case 9:
+            if (numBricks > MAX_BRICKS_9)
+                regionFull = YES;
+            break;
     }
     
     return regionFull;
@@ -394,7 +422,9 @@
 -(bool) allBrickRegionsFull{
     return bricksInRegion1 == MAX_BRICKS_1 && bricksInRegion2 == MAX_BRICKS_2 &&
         bricksInRegion3 == MAX_BRICKS_3 && bricksInRegion4 == MAX_BRICKS_4 &&
-        bricksInRegion5 == MAX_BRICKS_5;
+        bricksInRegion5 == MAX_BRICKS_5 && bricksInRegion6 == MAX_BRICKS_6 &&
+        bricksInRegion7 == MAX_BRICKS_7 && bricksInRegion8 == MAX_BRICKS_8 &&
+        bricksInRegion9 == MAX_BRICKS_9;
 }
 
 
