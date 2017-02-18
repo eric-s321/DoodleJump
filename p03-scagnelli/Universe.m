@@ -37,6 +37,18 @@ static Universe *singleton = nil;
     return [[Universe alloc] init];
 }
     
+-(void)setAVPlayer:(AVAudioPlayer *) player{
+    audioPlayer = player;
+}
+
+-(AVAudioPlayer *)getAVPlayer{
+    
+    if(audioPlayer)
+        return audioPlayer;
+    
+    return [[AVAudioPlayer alloc] init];
+}
+
 
 @end
 

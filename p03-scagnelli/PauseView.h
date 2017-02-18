@@ -1,5 +1,5 @@
 //
-//  Universe.h
+//  PauseView.h
 //  p03-scagnelli
 //
 //  Created by Eric Scagnelli on 2/17/17.
@@ -8,17 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import <AVFoundation/AVFoundation.h>
+#import "Universe.h"
 
-@interface Universe : NSObject{
+@interface PauseView : UIView{
     AVAudioPlayer *audioPlayer;
 }
 
-@property (nonatomic) int currentScore;
-
-+(Universe *)sharedInstance;
-
--(void)setAVPlayer:(AVAudioPlayer *) player;
--(AVAudioPlayer *)getAVPlayer;
-
+-(IBAction)stopMusic;
 
 @end

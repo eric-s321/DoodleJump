@@ -13,9 +13,7 @@
 @synthesize scoreLabel;
 
 -(void)viewDidLoad{
-    NSLog(@"In view did load");
     int score = [[Universe sharedInstance] currentScore];
-    NSLog(@"Score is %d", score);
     scoreLabel.text = [NSString stringWithFormat:@"Score: %d", score];
 }
 

@@ -15,12 +15,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    /*
-    // Disable landscape view
-    NSNumber *value = [NSNumber numberWithInt:UIInterfaceOrientationPortrait];
-    [[UIDevice currentDevice] setValue:value forKey:@"orientation"];
-     */
-    
     //Stop screen from falling asleep
     [UIApplication sharedApplication].idleTimerDisabled = YES;
     
@@ -60,17 +54,34 @@
 }
 
 - (IBAction)pauseGame:(id)sender{
-    //[gameView stopMovingBricks];
+    
     displayLink.paused = YES;
+    
+    NSString *soundFilePath = [[NSBundle mainBundle] pathForResource:@"Super_Mario_Brothers"  ofType:@"mp3"];
+    NSURL *soundFileURL = [NSURL fileURLWithPath:soundFilePath];
+     
+    NSError *error;
+    player = [[AVAudioPlayer alloc] initWithContentsOfURL:soundFileURL error:&error];
+    
+    if(error)
+        NSLog(@"Error is: %@", error);
+    
+    Universe *universe = [Universe sharedInstance];
+    [universe setAVPlayer:player];
+      
+    player.numberOfLoops = -1; //Infinite
+    
+    [player play];
 }
 
 -(IBAction) resumeGame:(UIStoryboardSegue *)segue{
     displayLink.paused = NO;
+    Universe *universe = [Universe sharedInstance];
+    player = [universe getAVPlayer];
+    [player stop];
 }
 
-
 -(void) gameOverSegue{
-//    NSLog(@"In the segue in view controller");
     [self performSegueWithIdentifier:@"showGameOverScreen" sender:self];
     displayLink.paused = YES;
 }

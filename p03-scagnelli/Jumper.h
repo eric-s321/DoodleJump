@@ -8,8 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+typedef enum{
+    MARIO_MODE = 0,
+    LUIGI_MODE = 1,
+    GIANT_MARIO_MODE = 2
+}JumperMode;
+
 @interface Jumper : UIImageView
 
 @property (nonatomic) double dx, dy;  //Velocity of jumper
+@property (nonatomic) JumperMode mode;
 
 @end

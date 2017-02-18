@@ -28,4 +28,9 @@
     self.scoreLabel.text = [NSString stringWithFormat:@"%d", scoreInt];
 }
 
+-(void) incrementScoreBy:(int) value{
+    scoreInt += value;
+    self.scoreLabel.text = [NSString stringWithFormat:@"%d", scoreInt];
+}
+
 @end

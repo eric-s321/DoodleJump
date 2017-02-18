@@ -27,6 +27,9 @@ typedef enum {
 
 @interface GameView : UIView{
     NSMutableArray *bricks;
+    NSMutableArray *coins;
+    NSMutableArray *greenMushrooms;
+    NSMutableArray *redMushrooms;
     int numPixelsCurrentBricksMoved;
     id<SegueDelegate> segueDelegate;
     int jumpLength;
@@ -36,6 +39,7 @@ typedef enum {
     int bricksInRegion4;
     int bricksInRegion5;
     SystemSoundID sound;
+    bool gameOver;
 }
 
 @property (strong, nonatomic) Jumper *jumper;
@@ -47,5 +51,7 @@ typedef enum {
 -(bool) bricksOverlap:(UIImageView *) newBrick;
 -(void) moveBricksDown:(int)distanceToMove;
 -(void) setSegueDelegate:(id<SegueDelegate>)delegate;
+-(void) displayMario;
+-(void) displayGiantMario;
 
 @end

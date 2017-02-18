@@ -7,7 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B659AB711E57E717000EFF0C /* coin_sound.wav in Resources */ = {isa = PBXBuildFile; fileRef = B659AB701E57E717000EFF0C /* coin_sound.wav */; };
+		B659AB731E57F706000EFF0C /* mario_powerup.wav in Resources */ = {isa = PBXBuildFile; fileRef = B659AB721E57F706000EFF0C /* mario_powerup.wav */; };
+		B659AB751E580561000EFF0C /* mario_powerdown.wav in Resources */ = {isa = PBXBuildFile; fileRef = B659AB741E580561000EFF0C /* mario_powerdown.wav */; };
 		B66D3A9F1E5398010015ED11 /* ScoreBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = B66D3A9E1E5398010015ED11 /* ScoreBarView.m */; };
+		B6AB5B1F1E578A8000594AE2 /* Super Mario Bros medley.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B6AB5B1E1E578A8000594AE2 /* Super Mario Bros medley.mp3 */; };
+		B6AB5B221E5790C900594AE2 /* PauseView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6AB5B211E5790C900594AE2 /* PauseView.m */; };
 		B6CAB4151E4D6B6800D7F337 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B6CAB4141E4D6B6800D7F337 /* main.m */; };
 		B6CAB4181E4D6B6800D7F337 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B6CAB4171E4D6B6800D7F337 /* AppDelegate.m */; };
 		B6CAB41B1E4D6B6800D7F337 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6CAB41A1E4D6B6800D7F337 /* ViewController.m */; };
@@ -24,6 +29,7 @@
 		B6E6163C1E56BF7000250D9C /* mario_jump_sound.wav in Resources */ = {isa = PBXBuildFile; fileRef = B6E6163B1E56BF7000250D9C /* mario_jump_sound.wav */; };
 		B6E6163F1E56C70200250D9C /* Universe.m in Sources */ = {isa = PBXBuildFile; fileRef = B6E6163E1E56C70200250D9C /* Universe.m */; };
 		B6E616421E56CB5B00250D9C /* GameOverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6E616411E56CB5B00250D9C /* GameOverViewController.m */; };
+		B6E616441E56D36A00250D9C /* Super_Mario_Brothers.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B6E616431E56D36A00250D9C /* Super_Mario_Brothers.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,8 +51,14 @@
 
 /* Begin PBXFileReference section */
 		B64FF9F71E54E16400DC88CF /* SegueDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SegueDelegate.h; sourceTree = "<group>"; };
+		B659AB701E57E717000EFF0C /* coin_sound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = coin_sound.wav; sourceTree = "<group>"; };
+		B659AB721E57F706000EFF0C /* mario_powerup.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = mario_powerup.wav; sourceTree = "<group>"; };
+		B659AB741E580561000EFF0C /* mario_powerdown.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = mario_powerdown.wav; sourceTree = "<group>"; };
 		B66D3A9D1E53978D0015ED11 /* ScoreBarView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScoreBarView.h; sourceTree = "<group>"; };
 		B66D3A9E1E5398010015ED11 /* ScoreBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScoreBarView.m; sourceTree = "<group>"; };
+		B6AB5B1E1E578A8000594AE2 /* Super Mario Bros medley.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Super Mario Bros medley.mp3"; sourceTree = "<group>"; };
+		B6AB5B211E5790C900594AE2 /* PauseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PauseView.m; sourceTree = "<group>"; };
+		B6AB5B231E57991400594AE2 /* PauseView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PauseView.h; sourceTree = "<group>"; };
 		B6CAB4101E4D6B6800D7F337 /* p03-scagnelli.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "p03-scagnelli.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6CAB4141E4D6B6800D7F337 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B6CAB4161E4D6B6800D7F337 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -76,6 +88,7 @@
 		B6E6163E1E56C70200250D9C /* Universe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Universe.m; sourceTree = "<group>"; };
 		B6E616401E56CB4E00250D9C /* GameOverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameOverViewController.h; sourceTree = "<group>"; };
 		B6E616411E56CB5B00250D9C /* GameOverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameOverViewController.m; sourceTree = "<group>"; };
+		B6E616431E56D36A00250D9C /* Super_Mario_Brothers.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Super_Mario_Brothers.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +150,8 @@
 				B6E6163E1E56C70200250D9C /* Universe.m */,
 				B6CAB4481E4D6D2E00D7F337 /* GameView.h */,
 				B6CAB4461E4D6D2000D7F337 /* GameView.m */,
+				B6AB5B231E57991400594AE2 /* PauseView.h */,
+				B6AB5B211E5790C900594AE2 /* PauseView.m */,
 				B6E616401E56CB4E00250D9C /* GameOverViewController.h */,
 				B6E616411E56CB5B00250D9C /* GameOverViewController.m */,
 				B6CAB4491E4D6F1800D7F337 /* Jumper.h */,
@@ -155,6 +170,11 @@
 		B6CAB4131E4D6B6800D7F337 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				B659AB741E580561000EFF0C /* mario_powerdown.wav */,
+				B659AB721E57F706000EFF0C /* mario_powerup.wav */,
+				B659AB701E57E717000EFF0C /* coin_sound.wav */,
+				B6AB5B1E1E578A8000594AE2 /* Super Mario Bros medley.mp3 */,
+				B6E616431E56D36A00250D9C /* Super_Mario_Brothers.mp3 */,
 				B6E6163B1E56BF7000250D9C /* mario_jump_sound.wav */,
 				B6E616391E56BE4200250D9C /* mario_gameover_sound.wav */,
 				B6E616321E56ADF000250D9C /* SuperMario256.ttf */,
@@ -288,8 +308,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B659AB731E57F706000EFF0C /* mario_powerup.wav in Resources */,
+				B659AB751E580561000EFF0C /* mario_powerdown.wav in Resources */,
 				B6CAB4231E4D6B6800D7F337 /* LaunchScreen.storyboard in Resources */,
+				B6AB5B1F1E578A8000594AE2 /* Super Mario Bros medley.mp3 in Resources */,
+				B659AB711E57E717000EFF0C /* coin_sound.wav in Resources */,
 				B6E6163C1E56BF7000250D9C /* mario_jump_sound.wav in Resources */,
+				B6E616441E56D36A00250D9C /* Super_Mario_Brothers.mp3 in Resources */,
 				B6E616331E56ADF000250D9C /* SuperMario256.ttf in Resources */,
 				B6CAB4201E4D6B6800D7F337 /* Assets.xcassets in Resources */,
 				B6E6163A1E56BE4200250D9C /* mario_gameover_sound.wav in Resources */,
@@ -323,6 +348,7 @@
 				B6CAB41B1E4D6B6800D7F337 /* ViewController.m in Sources */,
 				B6CAB4181E4D6B6800D7F337 /* AppDelegate.m in Sources */,
 				B6CAB4471E4D6D2000D7F337 /* GameView.m in Sources */,
+				B6AB5B221E5790C900594AE2 /* PauseView.m in Sources */,
 				B66D3A9F1E5398010015ED11 /* ScoreBarView.m in Sources */,
 				B6CAB4151E4D6B6800D7F337 /* main.m in Sources */,
 				B6E6163F1E56C70200250D9C /* Universe.m in Sources */,

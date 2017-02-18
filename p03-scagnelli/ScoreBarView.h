@@ -14,5 +14,6 @@
 @property (nonatomic) int scoreInt;
 
 -(void) incrementScore;
+-(void) incrementScoreBy:(int) value;
 
 @end
