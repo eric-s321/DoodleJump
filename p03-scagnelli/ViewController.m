@@ -45,6 +45,7 @@
         from GameView.
     */
     [gameView setSegueDelegate:self];
+    
 }
 
 

@@ -11,6 +11,7 @@
 		B659AB731E57F706000EFF0C /* mario_powerup.wav in Resources */ = {isa = PBXBuildFile; fileRef = B659AB721E57F706000EFF0C /* mario_powerup.wav */; };
 		B659AB751E580561000EFF0C /* mario_powerdown.wav in Resources */ = {isa = PBXBuildFile; fileRef = B659AB741E580561000EFF0C /* mario_powerdown.wav */; };
 		B66D3A9F1E5398010015ED11 /* ScoreBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = B66D3A9E1E5398010015ED11 /* ScoreBarView.m */; };
+		B696DBC71E5A47C00028FB6C /* HighScoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B696DBC61E5A47C00028FB6C /* HighScoreViewController.m */; };
 		B6AB5B1F1E578A8000594AE2 /* Super Mario Bros medley.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B6AB5B1E1E578A8000594AE2 /* Super Mario Bros medley.mp3 */; };
 		B6AB5B221E5790C900594AE2 /* PauseView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6AB5B211E5790C900594AE2 /* PauseView.m */; };
 		B6CAB4151E4D6B6800D7F337 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B6CAB4141E4D6B6800D7F337 /* main.m */; };
@@ -27,6 +28,7 @@
 		B6DAB14F1E58C80400892424 /* giant_mario_jump.wav in Resources */ = {isa = PBXBuildFile; fileRef = B6DAB14E1E58C80400892424 /* giant_mario_jump.wav */; };
 		B6DAB1511E58C8B300892424 /* luigi_jump_sound.wav in Resources */ = {isa = PBXBuildFile; fileRef = B6DAB1501E58C8B300892424 /* luigi_jump_sound.wav */; };
 		B6DAB1531E58C96000892424 /* mario_name.wav in Resources */ = {isa = PBXBuildFile; fileRef = B6DAB1521E58C96000892424 /* mario_name.wav */; };
+		B6DAB1561E58D35C00892424 /* HighScore.m in Sources */ = {isa = PBXBuildFile; fileRef = B6DAB1551E58D35C00892424 /* HighScore.m */; };
 		B6E616331E56ADF000250D9C /* SuperMario256.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B6E616321E56ADF000250D9C /* SuperMario256.ttf */; };
 		B6E616361E56B29E00250D9C /* RoundedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = B6E616351E56B29E00250D9C /* RoundedButton.m */; };
 		B6E6163A1E56BE4200250D9C /* mario_gameover_sound.wav in Resources */ = {isa = PBXBuildFile; fileRef = B6E616391E56BE4200250D9C /* mario_gameover_sound.wav */; };
@@ -60,6 +62,8 @@
 		B659AB741E580561000EFF0C /* mario_powerdown.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = mario_powerdown.wav; sourceTree = "<group>"; };
 		B66D3A9D1E53978D0015ED11 /* ScoreBarView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScoreBarView.h; sourceTree = "<group>"; };
 		B66D3A9E1E5398010015ED11 /* ScoreBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScoreBarView.m; sourceTree = "<group>"; };
+		B696DBC51E5A47A30028FB6C /* HighScoreViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HighScoreViewController.h; sourceTree = "<group>"; };
+		B696DBC61E5A47C00028FB6C /* HighScoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HighScoreViewController.m; sourceTree = "<group>"; };
 		B6AB5B1E1E578A8000594AE2 /* Super Mario Bros medley.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Super Mario Bros medley.mp3"; sourceTree = "<group>"; };
 		B6AB5B211E5790C900594AE2 /* PauseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PauseView.m; sourceTree = "<group>"; };
 		B6AB5B231E57991400594AE2 /* PauseView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PauseView.h; sourceTree = "<group>"; };
@@ -87,6 +91,8 @@
 		B6DAB14E1E58C80400892424 /* giant_mario_jump.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = giant_mario_jump.wav; sourceTree = "<group>"; };
 		B6DAB1501E58C8B300892424 /* luigi_jump_sound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = luigi_jump_sound.wav; sourceTree = "<group>"; };
 		B6DAB1521E58C96000892424 /* mario_name.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = mario_name.wav; sourceTree = "<group>"; };
+		B6DAB1541E58D34800892424 /* HighScore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HighScore.h; sourceTree = "<group>"; };
+		B6DAB1551E58D35C00892424 /* HighScore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HighScore.m; sourceTree = "<group>"; };
 		B6E616321E56ADF000250D9C /* SuperMario256.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SuperMario256.ttf; sourceTree = "<group>"; };
 		B6E616341E56B26600250D9C /* RoundedButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoundedButton.h; sourceTree = "<group>"; };
 		B6E616351E56B29E00250D9C /* RoundedButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoundedButton.m; sourceTree = "<group>"; };
@@ -154,6 +160,10 @@
 				B66D3A9D1E53978D0015ED11 /* ScoreBarView.h */,
 				B66D3A9E1E5398010015ED11 /* ScoreBarView.m */,
 				B64FF9F71E54E16400DC88CF /* SegueDelegate.h */,
+				B6DAB1541E58D34800892424 /* HighScore.h */,
+				B6DAB1551E58D35C00892424 /* HighScore.m */,
+				B696DBC51E5A47A30028FB6C /* HighScoreViewController.h */,
+				B696DBC61E5A47C00028FB6C /* HighScoreViewController.m */,
 				B6E6163D1E56C64400250D9C /* Universe.h */,
 				B6E6163E1E56C70200250D9C /* Universe.m */,
 				B6CAB4481E4D6D2E00D7F337 /* GameView.h */,
@@ -359,6 +369,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B6DAB1561E58D35C00892424 /* HighScore.m in Sources */,
 				B6E616421E56CB5B00250D9C /* GameOverViewController.m in Sources */,
 				B6E616361E56B29E00250D9C /* RoundedButton.m in Sources */,
 				B6CAB41B1E4D6B6800D7F337 /* ViewController.m in Sources */,
@@ -369,6 +380,7 @@
 				B6CAB4151E4D6B6800D7F337 /* main.m in Sources */,
 				B6E6163F1E56C70200250D9C /* Universe.m in Sources */,
 				B6CAB44B1E4D6F2C00D7F337 /* Jumper.m in Sources */,
+				B696DBC71E5A47C00028FB6C /* HighScoreViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

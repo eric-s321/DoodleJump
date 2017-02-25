@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import <AVFoundation/AVFoundation.h>
+#import "HighScore.h"
 
 @interface Universe : NSObject{
     AVAudioPlayer *audioPlayer;
+    NSMutableArray *highScores;
 }
 
 @property (nonatomic) int currentScore;
@@ -21,5 +23,7 @@
 -(AVAudioPlayer *)getAVPlayer;
 -(void)save;
 -(void)load;
+-(void)addHighScore:(HighScore *) highScore;
+-(NSMutableArray *)getHighScores;
 
 @end

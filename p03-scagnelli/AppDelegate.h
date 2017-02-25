@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Universe.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 

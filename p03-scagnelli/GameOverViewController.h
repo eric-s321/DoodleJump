@@ -15,6 +15,10 @@
 @interface GameOverViewController : UIViewController
 
 @property (strong, nonatomic) IBOutlet UILabel *scoreLabel;
+@property (strong, nonatomic) IBOutlet UITextField *textField;
+
+-(IBAction)submitHighScore;
+-(IBAction)dismissKeyboard:(id)sender;
 
 @end
 
